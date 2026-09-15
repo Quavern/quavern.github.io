@@ -33,6 +33,21 @@
       "site": "https://oss.quavern.com/quavsit-observatory/"
     },
     {
+      "repo": "marl-review",
+      "state": "public",
+      "since": "2026-09-16",
+      "licence": "LicenseRef-QOSL-1.0",
+      "list": true,
+      "en": {
+        "name": "Marl Review",
+        "summary": "A GitHub Action that reviews a pull request with Marl Code and posts one comment listing the concrete defects the diff introduces, updated on every push. Runs on the caller's Marl plan; skips pull requests from forks."
+      },
+      "fr": {
+        "name": "Marl Review",
+        "summary": "Une Action GitHub qui relit une pull request avec Marl Code et publie un seul commentaire listant les défauts concrets introduits par le diff, mis à jour à chaque push. S’exécute sur le forfait Marl de l’appelant ; ignore les pull requests venant de forks."
+      }
+    },
+    {
       "repo": "quavsit-core",
       "state": "studying",
       "since": "2026-09-15",
