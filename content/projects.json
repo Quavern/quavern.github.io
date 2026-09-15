@@ -18,18 +18,19 @@
     },
     {
       "repo": "quavsit-observatory",
-      "state": "preparing",
+      "state": "public",
       "since": "2026-09-15",
       "licence": "LicenseRef-QOSL-1.0",
       "list": true,
       "en": {
         "name": "Quavsit Observatory",
-        "summary": "A daily record of 147 French public-transport feeds as an engine reads them: when each timetable ends, how old each real-time feed is, and how much of its real-time data matches the timetable. Specification written; no public code yet."
+        "summary": "A daily record of 147 French public-transport feeds as an engine reads them: when each timetable ends, how old each real-time feed is, and how much of its real-time data matches the timetable. In trial since 15 September 2026; measurements under CC BY 4.0."
       },
       "fr": {
         "name": "Observatoire Quavsit",
-        "summary": "Un relevé quotidien de 147 flux de transport public français tels qu’un moteur les lit : la date de fin de chaque horaire, l’âge de chaque flux temps réel et la part de ses données qui correspond aux horaires. Spécification écrite ; pas encore de code public."
-      }
+        "summary": "Un relevé quotidien de 147 flux de transport public français tels qu’un moteur les lit : la date de fin de chaque horaire, l’âge de chaque flux temps réel et la part de ses données qui correspond aux horaires. En rodage depuis le 15 septembre 2026 ; mesures sous CC BY 4.0."
+      },
+      "site": "https://oss.quavern.com/quavsit-observatory/"
     },
     {
       "repo": "quavsit-core",

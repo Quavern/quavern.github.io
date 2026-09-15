@@ -37,7 +37,7 @@ const copy = {
     lede: `The repositories Quavern opens, the licence they use, and the rules it follows when it opens code. Every repository lives at <a href="https://github.com/${org}">github.com/${org}</a>.`,
     description: "The repositories Quavern opens, the licence they use, and the rules it follows when it opens code.",
     repositories: "Repositories",
-    repositoriesNote: "Only the first repository is public today. The Observatory is listed at its real stage: a written specification, with no public code yet.",
+    repositoriesNote: "Every public repository of the Quavern organisation, with the day it opened.",
     states: { public: "Public", preparing: "Specification written", studying: "Under study" },
     since: "since",
     licence: "Licence",
@@ -86,7 +86,7 @@ const copy = {
     lede: `Les dépôts que Quavern ouvre, la licence qu’ils utilisent et les règles suivies pour ouvrir du code. Tous les dépôts sont sur <a href="https://github.com/${org}">github.com/${org}</a>.`,
     description: "Les dépôts que Quavern ouvre, la licence qu’ils utilisent et les règles suivies pour ouvrir du code.",
     repositories: "Dépôts",
-    repositoriesNote: "Seul le premier dépôt est public aujourd’hui. L’Observatoire figure à son stade réel : une spécification écrite, sans code public pour l’instant.",
+    repositoriesNote: "Tous les dépôts publics de l’organisation Quavern, avec leur date d’ouverture.",
     states: { public: "Public", preparing: "Spécification écrite", studying: "À l’étude" },
     since: "depuis le",
     licence: "Licence",
@@ -277,7 +277,8 @@ function indexPage(lang) {
     .filter((p) => p.list !== false)
     .map((p) => {
       const text = p[lang];
-      const name = p.state === "public" ? `<a href="https://github.com/${org}/${p.repo}">${escapeHtml(text.name)}</a>` : escapeHtml(text.name);
+      const href = p.repo === "quavern.github.io" ? `https://github.com/${org}/${p.repo}` : p.site || `https://github.com/${org}/${p.repo}`;
+      const name = p.state === "public" ? `<a href="${href}">${escapeHtml(text.name)}</a>` : escapeHtml(text.name);
       return `            <li class="repo repo--${p.state}">
               <div class="repo-head">
                 <h3 class="repo-name">${name}</h3>
