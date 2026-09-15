@@ -1,0 +1,26 @@
+oss.quavern.com
+Copyright (c) 2026 Quavern
+
+These files carry no comment header of their own and are Covered Files under
+the Quavern Open Source License, version 1.0 (SPDX: LicenseRef-QOSL-1.0),
+https://oss.quavern.com/licences/qosl/1.0/ :
+
+  assets/theme.js
+  assets/theme-control.js
+  assets/tokens.css
+  content/projects.json
+  content/upstream.json
+  README.md
+  CONTRIBUTING.md
+  SECURITY.md
+
+Third-party material:
+
+  assets/fonts/LinealVF.woff2
+    Copyright (c) 2010-2023 Frank Adebiaye, Reserved Font Name Lineal.
+    SIL Open Font License 1.1 (assets/fonts/LINEAL-OFL.txt).
+  assets/fonts/AtkinsonHyperlegibleNext-Latin.woff2
+    Copyright 2020-2024 The Atkinson Hyperlegible Next Project Authors.
+    SIL Open Font License 1.1 (assets/fonts/ATKINSON-NEXT-OFL.txt).
+
+Not licensed: assets/logo/ and the Quavern name.

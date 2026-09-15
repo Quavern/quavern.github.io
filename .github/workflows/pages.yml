@@ -1,0 +1,49 @@
+# SPDX-License-Identifier: LicenseRef-QOSL-1.0
+# Copyright (c) 2026 Quavern
+# This file is subject to the Quavern Open Source License, version 1.0.
+# A copy is available at https://oss.quavern.com/licences/qosl/1.0/
+
+name: Build and publish oss.quavern.com
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    # Once a day, so the list is checked against the organisation's public repositories.
+    - cron: "17 5 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Build (fails when content/projects.json and the organisation disagree)
+        run: node build.mjs --check-github
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: https://oss.quavern.com/
+    steps:
+      - uses: actions/deploy-pages@v4

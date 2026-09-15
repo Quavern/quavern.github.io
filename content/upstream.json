@@ -1,0 +1,15 @@
+{
+  "_": "Open-source software Quavern's products depend on, with the licence each project publishes. Add a row only for a dependency a shipped product really uses.",
+  "software": [
+    { "name": "NetBSD", "url": "https://www.netbsd.org/", "licence": "BSD licences", "en": "The base system of QuavernOS.", "fr": "Le système de base de QuavernOS." },
+    { "name": "Flask", "url": "https://flask.palletsprojects.com/", "licence": "BSD-3-Clause", "en": "The APIs of Marl, myQuavern and Quavsit.", "fr": "Les API de Marl, myQuavern et Quavsit." },
+    { "name": "Nuxt", "url": "https://nuxt.com/", "licence": "MIT", "en": "The Marl, myQuavern and Quavsit web applications.", "fr": "Les applications web de Marl, myQuavern et Quavsit." },
+    { "name": "Vue", "url": "https://vuejs.org/", "licence": "MIT", "en": "The interface layer of those applications.", "fr": "La couche d’interface de ces applications." },
+    { "name": "Go", "url": "https://go.dev/", "licence": "BSD-3-Clause", "en": "The language and toolchain of Marl Code.", "fr": "Le langage et la chaîne de compilation de Marl Code." },
+    { "name": "Bubble Tea", "url": "https://github.com/charmbracelet/bubbletea", "licence": "MIT", "en": "The terminal interface of Marl Code.", "fr": "L’interface terminal de Marl Code." },
+    { "name": "SQLite", "url": "https://sqlite.org/", "licence": "Public domain", "en": "Quavsit's transit store and the platform database.", "fr": "Le stockage transport de Quavsit et la base de la plateforme." },
+    { "name": "gtfs-realtime-bindings", "url": "https://github.com/MobilityData/gtfs-realtime-bindings", "licence": "Apache-2.0", "en": "Reading GTFS-RT feeds in Quavsit.", "fr": "La lecture des flux GTFS-RT dans Quavsit." },
+    { "name": "Lineal", "url": "https://velvetyne.fr/fonts/lineal/", "licence": "OFL-1.1", "en": "The display typeface of every Quavern surface.", "fr": "Le caractère de titrage de toutes les surfaces Quavern." },
+    { "name": "Atkinson Hyperlegible Next", "url": "https://github.com/googlefonts/atkinson-hyperlegible-next", "licence": "OFL-1.1", "en": "The text typeface of every Quavern surface.", "fr": "Le caractère de texte de toutes les surfaces Quavern." }
+  ]
+}

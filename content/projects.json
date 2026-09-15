@@ -1,0 +1,50 @@
+{
+  "_": "Every repository Quavern publishes, and the openings it prepares. `state` is public (the repository exists and is public), preparing (a written specification, no public code yet) or studying (a study is under way; nothing is decided). `list: false` keeps an entry out of the site. With --check-github the build fails when a public repository of the Quavern organisation is missing here, or when a `public` entry has no public repository.",
+  "projects": [
+    {
+      "repo": "quavern.github.io",
+      "state": "public",
+      "since": "2026-09-15",
+      "licence": "LicenseRef-QOSL-1.0",
+      "list": true,
+      "en": {
+        "name": "oss.quavern.com",
+        "summary": "The source of this site: a static build with no dependency, the Quavern Open Source License and this list."
+      },
+      "fr": {
+        "name": "oss.quavern.com",
+        "summary": "La source de ce site : une construction statique sans dépendance, la Licence open source Quavern et cette liste."
+      }
+    },
+    {
+      "repo": "quavsit-observatory",
+      "state": "preparing",
+      "since": "2026-09-15",
+      "licence": "LicenseRef-QOSL-1.0",
+      "list": true,
+      "en": {
+        "name": "Quavsit Observatory",
+        "summary": "A dated daily record of what 147 French public-transport feeds are worth when an engine reads them: timetable end dates, feed age, and how much real-time data matches the timetable. Specification written; no public code yet."
+      },
+      "fr": {
+        "name": "Observatoire Quavsit",
+        "summary": "Un relevé quotidien et daté de ce que valent 147 flux de transport public français quand un moteur les lit : fin des horaires, âge des flux, part du temps réel qui correspond aux horaires. Spécification écrite ; pas encore de code public."
+      }
+    },
+    {
+      "repo": "quavsit-core",
+      "state": "studying",
+      "since": "2026-09-15",
+      "licence": "LicenseRef-QOSL-1.0",
+      "list": false,
+      "en": {
+        "name": "quavsit-core",
+        "summary": "The generic part of Quavsit's transit engine: GTFS and GTFS-RT ingest, the journey planner and the network descriptors. The study is under way; opening it is not decided."
+      },
+      "fr": {
+        "name": "quavsit-core",
+        "summary": "La partie générique du moteur de transport de Quavsit : ingestion GTFS et GTFS-RT, calculateur d’itinéraires et descripteurs de réseaux. L’étude est en cours ; l’ouverture n’est pas décidée."
+      }
+    }
+  ]
+}
