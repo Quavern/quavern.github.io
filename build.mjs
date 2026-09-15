@@ -37,7 +37,7 @@ const copy = {
     lede: `The repositories Quavern opens, the licence they use, and the rules it follows when it opens code. Every repository lives at <a href="https://github.com/${org}">github.com/${org}</a>.`,
     description: "The repositories Quavern opens, the licence they use, and the rules it follows when it opens code.",
     repositories: "Repositories",
-    repositoriesNote: "Only the first entry is public today. The other is written down so its state is on record, not promised.",
+    repositoriesNote: "Only the first repository is public today. The Observatory is listed at its real stage: a written specification, with no public code yet.",
     states: { public: "Public", preparing: "Specification written", studying: "Under study" },
     since: "since",
     licence: "Licence",
@@ -55,8 +55,8 @@ const copy = {
     licenceOther: "Lire en français",
     rules: "How Quavern opens code",
     rulesList: [
-      ["Open where it helps, hosted where it helps", "Code is opened where inspection, reuse and trust matter. Services are sold where running them is the useful part: Marl, Marl Code and the hosted Quavsit API stay closed."],
-      ["Data keeps its producer", "Open data keeps its licence and its credit: Licence Ouverte 2.0, ODbL, Licence Mobilités and the others named in each repository."],
+      ["What stays closed", "Code is opened where people need to inspect it, reuse it or trust it. Marl, Marl Code and the hosted Quavsit API stay closed: running them is the part customers pay for."],
+      ["Open data keeps its licence", "Open data keeps its licence and its credit: Licence Ouverte 2.0, ODbL, Licence Mobilités and the others named in each repository."],
       ["No secret in a repository", "Provider keys, share links and personal details stay out of published code. A repository starts with its own history, never a copy of Quavern's private one."],
       ["Security reports stay private", `Write to <a href="mailto:hello@quavern.com?subject=Security">hello@quavern.com</a> with "Security" in the subject, not in a public issue.`],
       ["Contributions", "Issues and pull requests are read. Each repository says what it accepts in its CONTRIBUTING file, and a contribution is received under the repository's licence."]
@@ -86,7 +86,7 @@ const copy = {
     lede: `Les dépôts que Quavern ouvre, la licence qu’ils utilisent et les règles suivies pour ouvrir du code. Tous les dépôts sont sur <a href="https://github.com/${org}">github.com/${org}</a>.`,
     description: "Les dépôts que Quavern ouvre, la licence qu’ils utilisent et les règles suivies pour ouvrir du code.",
     repositories: "Dépôts",
-    repositoriesNote: "Seule la première entrée est publique aujourd’hui. L’autre est écrite pour que son état soit consigné, pas promis.",
+    repositoriesNote: "Seul le premier dépôt est public aujourd’hui. L’Observatoire figure à son stade réel : une spécification écrite, sans code public pour l’instant.",
     states: { public: "Public", preparing: "Spécification écrite", studying: "À l’étude" },
     since: "depuis le",
     licence: "Licence",
@@ -104,8 +104,8 @@ const copy = {
     licenceOther: "Read in English",
     rules: "Comment Quavern ouvre du code",
     rulesList: [
-      ["Ouvert là où c’est utile, hébergé là où c’est utile", "Le code est ouvert quand l’examen, la réutilisation et la confiance comptent. Les services sont vendus quand les faire tourner est la partie utile : Marl, Marl Code et l’API Quavsit hébergée restent fermés."],
-      ["Les données gardent leur producteur", "Les données ouvertes gardent leur licence et leur crédit : Licence Ouverte 2.0, ODbL, Licence Mobilités et les autres citées dans chaque dépôt."],
+      ["Ce qui reste fermé", "Le code est ouvert quand on a besoin de l’examiner, de le réutiliser ou de lui faire confiance. Marl, Marl Code et l’API Quavsit hébergée restent fermés : leur exploitation est ce que paient les clients."],
+      ["Les données ouvertes gardent leur licence", "Les données ouvertes gardent leur licence et leur crédit : Licence Ouverte 2.0, ODbL, Licence Mobilités et les autres citées dans chaque dépôt."],
       ["Aucun secret dans un dépôt", "Clés de fournisseurs, liens de partage et informations personnelles restent hors du code publié. Un dépôt commence avec son propre historique, jamais une copie de l’historique privé de Quavern."],
       ["Les signalements de sécurité restent privés", `Écrivez à <a href="mailto:hello@quavern.com?subject=S%C3%A9curit%C3%A9">hello@quavern.com</a> avec « Sécurité » dans l’objet, pas dans un ticket public.`],
       ["Contributions", "Les tickets et les pull requests sont lus. Chaque dépôt indique ce qu’il accepte dans son fichier CONTRIBUTING, et une contribution est reçue sous la licence du dépôt."]

@@ -24,11 +24,11 @@
       "list": true,
       "en": {
         "name": "Quavsit Observatory",
-        "summary": "A dated daily record of what 147 French public-transport feeds are worth when an engine reads them: timetable end dates, feed age, and how much real-time data matches the timetable. Specification written; no public code yet."
+        "summary": "A daily record of 147 French public-transport feeds as an engine reads them: when each timetable ends, how old each real-time feed is, and how much of its real-time data matches the timetable. Specification written; no public code yet."
       },
       "fr": {
         "name": "Observatoire Quavsit",
-        "summary": "Un relevé quotidien et daté de ce que valent 147 flux de transport public français quand un moteur les lit : fin des horaires, âge des flux, part du temps réel qui correspond aux horaires. Spécification écrite ; pas encore de code public."
+        "summary": "Un relevé quotidien de 147 flux de transport public français tels qu’un moteur les lit : la date de fin de chaque horaire, l’âge de chaque flux temps réel et la part de ses données qui correspond aux horaires. Spécification écrite ; pas encore de code public."
       }
     },
     {
