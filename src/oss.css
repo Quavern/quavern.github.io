@@ -73,6 +73,9 @@ pre {
   top: var(--space-3);
   left: var(--space-3);
   z-index: var(--z-modal);
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--control-height);
   padding: var(--space-2) var(--space-4);
   background: var(--color-solid);
   color: var(--color-solid-ink);
@@ -82,6 +85,15 @@ pre {
 
 .skip-link:focus {
   translate: 0 0;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 .oss-shell {
@@ -113,6 +125,20 @@ pre {
   display: block;
   width: auto;
   height: 1.6rem;
+}
+
+/* The wordmark is baked two-colour artwork and cannot follow a token: after
+   hours it becomes the reverse cut, which carries the same viewBox. A
+   <picture> source would follow the system only, and lose the mark when a
+   reader pins the other theme. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .oss-wordmark {
+    content: url("./assets/logo/quavern-primary-reverse.svg");
+  }
+}
+
+:root[data-theme="dark"] .oss-wordmark {
+  content: url("./assets/logo/quavern-primary-reverse.svg");
 }
 
 .oss-brand-name {
@@ -550,18 +576,30 @@ pre {
   text-wrap: pretty;
 }
 
+/* The notices are meant to be copied whole; on a narrow screen they wrap
+   rather than hide their end behind a sideways scroll. Copying keeps the
+   original line breaks. */
 .licence-body pre {
   overflow-x: auto;
   padding: var(--space-4);
   border: var(--border-thin) solid var(--color-rule);
   background: var(--color-paper-raised);
   line-height: 1.5;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
 }
 
 .licence-break {
   margin-block: var(--space-7) 0;
   border: 0;
   border-top: var(--border-heavy) solid var(--color-rule);
+}
+
+/* A heading right after the heavy break needs no second rule of its own. */
+.licence-break + h2 {
+  margin-top: var(--space-5);
+  padding-top: 0;
+  border-top: 0;
 }
 
 /* Colophon: where this page comes from, then the house line and links. */
@@ -632,6 +670,7 @@ pre {
 
   .oss-tools {
     width: 100%;
+    flex-wrap: wrap;
     justify-content: space-between;
   }
 
@@ -689,7 +728,29 @@ pre {
   }
 }
 
+/* At 320 px the French control (AUTO / CLAIR / SOMBRE) is wider than the
+   line: tighten the controls before anything is cut off. */
+@media (max-width: 24rem) {
+  .oss-tools {
+    gap: var(--space-2);
+  }
+
+  .oss-language {
+    padding-inline: var(--space-3);
+  }
+
+  .theme-toggle__label {
+    padding-inline: var(--space-2);
+    letter-spacing: 0.04em;
+  }
+}
+
 @media print {
+  :root:not([data-theme]) .oss-wordmark,
+  :root[data-theme] .oss-wordmark {
+    content: url("./assets/logo/quavern-primary-ink.svg");
+  }
+
   .oss-tools,
   .oss-colophon-foot nav {
     display: none;

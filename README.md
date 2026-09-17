@@ -17,7 +17,9 @@ AUTO / LIGHT / DARK control.
 - `list: false` keeps an entry out of the pages.
 
 `content/upstream.json` lists open-source software Quavern's products depend
-on. Add a row only for a dependency a shipped product really uses.
+on. Add a row only for a dependency a shipped product really uses. `licence` is
+an SPDX identifier, or `{ "en": …, "fr": … }` when the licence is named in
+words.
 
 ## Build and preview
 

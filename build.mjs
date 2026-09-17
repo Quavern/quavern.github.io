@@ -63,6 +63,7 @@ const copy = {
     ],
     upstream: "Built on",
     upstreamNote: "Open-source software that Quavern's products depend on, with the licence each project publishes.",
+    upstreamColumns: ["Software", "Used for", "Licence"],
     colophon: (commit, date) =>
       `oss.quavern.com is built from <a href="https://github.com/${org}/quavern.github.io">github.com/${org}/quavern.github.io</a> with no dependency and served by GitHub Pages; GitHub receives visitors' IP addresses as the host. Built on ${date}${commit ? ` from commit <code>${commit}</code>` : ""}. Type: Lineal by Frank Adebiaye and Atkinson Hyperlegible Next, both under the SIL Open Font License 1.1. The Quavern name and logo are not licensed here.`,
     footerNav: "Quavern links",
@@ -72,6 +73,10 @@ const copy = {
     licencePageTitle: "Quavern Open Source License, version 1.0",
     licenceBack: "What Quavern publishes",
     licenceRaw: "Markdown source",
+    licenceIndexTitle: "Quavern Open Source License: versions",
+    licenceIndexIntro: "Every published version of the licence, newest first. A version is never edited after publication; a change gets a new version number.",
+    licenceIndexVersion: (version, date) => `Version ${version}, text of ${date}`,
+    licenceIndexStatus: "Draft under legal review.",
     notFound: "This page does not exist.",
     notFoundBody: "The link may be incomplete, or the page has moved."
   },
@@ -96,7 +101,7 @@ const copy = {
     licencePoints: [
       "Utiliser, étudier, modifier et partager le code pour tout usage.",
       "Un de nos fichiers que vous modifiez reste sous la licence quand vous le distribuez ou l’exploitez en service réseau ; le reste de votre programme vous appartient.",
-      "Les brevets des contributeurs sont concédés avec leur code.",
+      "Chaque contributeur concède une licence sur ses brevets avec son code.",
       "Les crédits des producteurs de données ouvertes restent attachés au logiciel."
     ],
     licenceStatus: "Le texte du 15 septembre 2026 est un projet en cours d’examen juridique. Le dépôt de ce site en est le premier usage ; si l’examen modifie le texte, la modification reçoit un nouveau numéro de version.",
@@ -104,14 +109,15 @@ const copy = {
     licenceOther: "Read in English",
     rules: "Comment Quavern ouvre du code",
     rulesList: [
-      ["Ce qui reste fermé", "Le code est ouvert quand on a besoin de l’examiner, de le réutiliser ou de lui faire confiance. Marl, Marl Code et l’API Quavsit hébergée restent fermés : leur exploitation est ce que paient les clients."],
+      ["Ce qui reste fermé", "Le code est ouvert quand on a besoin de l’examiner, de le réutiliser ou de lui faire confiance. Marl, Marl Code et l’API Quavsit hébergée restent fermés : c’est leur exploitation que paient les clients."],
       ["Les données ouvertes gardent leur licence", "Les données ouvertes gardent leur licence et leur crédit : Licence Ouverte 2.0, ODbL, Licence Mobilités et les autres citées dans chaque dépôt."],
-      ["Aucun secret dans un dépôt", "Clés de fournisseurs, liens de partage et informations personnelles restent hors du code publié. Un dépôt commence avec son propre historique, jamais une copie de l’historique privé de Quavern."],
+      ["Aucun secret dans un dépôt", "Les clés de fournisseurs, les liens de partage et les informations personnelles restent hors du code publié. Un dépôt commence avec son propre historique, jamais une copie de l’historique privé de Quavern."],
       ["Les signalements de sécurité restent privés", `Écrivez à <a href="mailto:hello@quavern.com?subject=S%C3%A9curit%C3%A9">hello@quavern.com</a> avec « Sécurité » dans l’objet, pas dans un ticket public.`],
       ["Contributions", "Les tickets et les pull requests sont lus. Chaque dépôt indique ce qu’il accepte dans son fichier CONTRIBUTING, et une contribution est reçue sous la licence du dépôt."]
     ],
-    upstream: "Construit sur",
+    upstream: "Ce sur quoi Quavern s’appuie",
     upstreamNote: "Les logiciels libres dont dépendent les produits de Quavern, avec la licence publiée par chaque projet.",
+    upstreamColumns: ["Logiciel", "Utilisé pour", "Licence"],
     colophon: (commit, date) =>
       `oss.quavern.com est construit à partir de <a href="https://github.com/${org}/quavern.github.io">github.com/${org}/quavern.github.io</a>, sans dépendance, et servi par GitHub Pages ; GitHub reçoit l’adresse IP des visiteurs en tant qu’hébergeur. Construit le ${date}${commit ? ` à partir du commit <code>${commit}</code>` : ""}. Caractères : Lineal de Frank Adebiaye et Atkinson Hyperlegible Next, tous deux sous SIL Open Font License 1.1. Le nom et le logo Quavern ne sont pas concédés ici.`,
     footerNav: "Liens Quavern",
@@ -121,6 +127,10 @@ const copy = {
     licencePageTitle: "Licence open source Quavern, version 1.0",
     licenceBack: "Ce que Quavern publie",
     licenceRaw: "Source Markdown",
+    licenceIndexTitle: "Licence open source Quavern : versions",
+    licenceIndexIntro: "Toutes les versions publiées de la licence, de la plus récente à la plus ancienne. Une version n’est jamais modifiée après sa publication ; une modification reçoit un nouveau numéro de version.",
+    licenceIndexVersion: (version, date) => `Version ${version}, texte du ${date}`,
+    licenceIndexStatus: "Projet en cours d’examen juridique.",
     notFound: "Cette page n’existe pas.",
     notFoundBody: "Le lien est peut-être incomplet, ou la page a été déplacée."
   }
@@ -140,6 +150,8 @@ const formatDate = (isoDate, lang) =>
 
 const home = (lang) => (lang === "fr" ? "/fr/" : "/");
 const licencePath = (lang) => (lang === "fr" ? "/fr/licences/qosl/1.0/" : "/licences/qosl/1.0/");
+// The licence text promises new versions at /licences/qosl/, so that address lists them.
+const licenceIndexPath = (lang) => (lang === "fr" ? "/fr/licences/qosl/" : "/licences/qosl/");
 
 // The Markdown the licence texts use: # and ## headings, paragraphs, fenced
 // code, ---, **strong**, `code` and bare https links. Raw HTML is escaped.
@@ -194,8 +206,10 @@ function renderMarkdown(markdown, lang) {
   return { title, html: lang === "fr" ? frenchSpacing(html) : html };
 }
 
-function shell({ lang, title, description, path, alternates, main }) {
+function shell({ lang, title: rawTitle, description: rawDescription, path, alternates, main }) {
   const t = copy[lang];
+  const title = lang === "fr" ? frenchSpacing(rawTitle) : rawTitle;
+  const description = lang === "fr" ? frenchSpacing(rawDescription) : rawDescription;
   const links = alternates.map(({ hreflang, href }) => `<link rel="alternate" hreflang="${hreflang}" href="${siteUrl}${href}">`).join("\n    ");
   return `<!doctype html>
 <html lang="${lang}">
@@ -238,10 +252,7 @@ function header(lang, switchHref) {
   const other = lang === "fr" ? "en" : "fr";
   return `      <header class="oss-header">
         <a class="oss-brand" href="${home(lang)}">
-          <picture>
-            <source media="(prefers-color-scheme: dark)" srcset="/assets/logo/quavern-primary-reverse.svg">
-            <img src="/assets/logo/quavern-primary-ink.svg" alt="Quavern" width="${logo.width}" height="${logo.height}">
-          </picture>
+          <img class="oss-wordmark" src="/assets/logo/quavern-primary-ink.svg" alt="Quavern" width="${logo.width}" height="${logo.height}">
           <span class="oss-brand-name">${t.brandName}</span>
         </a>
         <div class="oss-tools">
@@ -261,10 +272,10 @@ function footer(lang) {
         <div class="oss-colophon-foot">
           <p><strong>Quavern</strong> — ${t.slogan}</p>
           <nav aria-label="${t.footerNav}">
-            <a href="https://quavern.com/${lang === "fr" ? "?lang=fr" : ""}">quavern.com</a>
+            <a href="https://quavern.com/?lang=${lang}">quavern.com</a>
             <a href="https://github.com/${org}">GitHub</a>
-            <a href="https://quavern.com/mentions-legales.html">${t.legal}</a>
-            <a href="https://quavern.com/privacy.html">${t.privacy}</a>
+            <a href="https://quavern.com/mentions-legales.html?lang=${lang}">${t.legal}</a>
+            <a href="https://quavern.com/privacy.html?lang=${lang}">${t.privacy}</a>
           </nav>
         </div>
       </footer>`;
@@ -295,7 +306,7 @@ function indexPage(lang) {
   const software = upstream
     .map(
       (s) =>
-        `            <tr><th scope="row"><a href="${s.url}">${escapeHtml(s.name)}</a></th><td>${escapeHtml(fr(s[lang]))}</td><td class="licence-cell">${escapeHtml(s.licence)}</td></tr>`
+        `            <tr><th scope="row"><a href="${s.url}">${escapeHtml(s.name)}</a></th><td>${escapeHtml(fr(s[lang]))}</td><td class="licence-cell">${escapeHtml(typeof s.licence === "string" ? s.licence : s.licence[lang])}</td></tr>`
     )
     .join("\n");
   const other = lang === "fr" ? "en" : "fr";
@@ -353,11 +364,13 @@ ${rules}
 
         <section class="oss-section" aria-labelledby="upstream-title">
           <div class="section-head">
-            <h2 id="upstream-title">${t.upstream}</h2>
+            <h2 id="upstream-title">${fr(t.upstream)}</h2>
             <p>${fr(t.upstreamNote)}</p>
           </div>
           <div class="table-scroll">
             <table class="upstream">
+              <caption class="visually-hidden">${fr(t.upstream)}</caption>
+              <thead class="visually-hidden"><tr>${t.upstreamColumns.map((column) => `<th scope="col">${column}</th>`).join("")}</tr></thead>
               <tbody>
 ${software}
               </tbody>
@@ -396,6 +409,38 @@ ${footer(lang)}`
   });
 }
 
+function licenceIndexPage(lang) {
+  const t = copy[lang];
+  const other = lang === "fr" ? "en" : "fr";
+  const fr = (s) => (lang === "fr" ? frenchSpacing(s) : s);
+  return shell({
+    lang,
+    title: `${fr(t.licenceIndexTitle)} — ${t.siteName}`,
+    description: t.licenceIndexIntro,
+    path: licenceIndexPath(lang),
+    alternates: [
+      { hreflang: "en", href: licenceIndexPath("en") },
+      { hreflang: "fr", href: licenceIndexPath("fr") }
+    ],
+    main: `${header(lang, licenceIndexPath(other))}
+      <main id="main" tabindex="-1">
+        <p class="licence-back"><a href="${home(lang)}">${t.licenceBack}</a></p>
+        <section class="oss-intro" aria-labelledby="versions-title">
+          <h1 id="versions-title">${fr(t.licenceIndexTitle)}</h1>
+          <p>${fr(t.licenceIndexIntro)}</p>
+        </section>
+        <section class="oss-section" aria-labelledby="version-1-0">
+          <div class="section-head">
+            <h2 id="version-1-0">${fr(t.licenceIndexVersion("1.0", formatDate("2026-09-15", lang)))}</h2>
+            <p>${fr(t.licenceIndexStatus)}</p>
+          </div>
+          <p class="licence-links"><a href="${licencePath(lang)}">${t.licenceRead}</a><a href="${licencePath(other)}" hreflang="${other}" lang="${other}">${t.licenceOther}</a></p>
+        </section>
+      </main>
+${footer(lang)}`
+  });
+}
+
 async function write(path, text) {
   const target = resolve(out, path);
   await mkdir(dirname(target), { recursive: true });
@@ -422,6 +467,10 @@ for (const p of projects) {
   if (!["public", "preparing", "studying"].includes(p.state)) throw new Error(`${p.repo}: unknown state "${p.state}"`);
   if (!/^\d{4}-\d{2}-\d{2}$/.test(p.since)) throw new Error(`${p.repo}: since must be YYYY-MM-DD`);
   for (const lang of Object.keys(copy)) if (!p[lang]?.name || !p[lang]?.summary) throw new Error(`${p.repo}: ${lang} name and summary are required`);
+}
+for (const s of upstream) {
+  const named = typeof s.licence === "string" ? s.licence : Object.keys(copy).every((lang) => s.licence?.[lang]);
+  if (!named || !s.en || !s.fr) throw new Error(`${s.name}: licence (a string, or en and fr) and en and fr uses are required`);
 }
 if (checkGithub) await checkAgainstGithub();
 
@@ -461,6 +510,8 @@ await write("index.html", indexPage("en"));
 await write("fr/index.html", indexPage("fr"));
 await write("licences/qosl/1.0/index.html", licencePage("en", licences.en));
 await write("fr/licences/qosl/1.0/index.html", licencePage("fr", licences.fr));
+await write("licences/qosl/index.html", licenceIndexPage("en"));
+await write("fr/licences/qosl/index.html", licenceIndexPage("fr"));
 await write(
   "404.html",
   shell({
@@ -480,14 +531,17 @@ await write(
 ${footer("en")}`
   })
 );
-const urls = ["/", "/fr/", licencePath("en"), licencePath("fr")];
+const urls = ["/", "/fr/", licenceIndexPath("en"), licenceIndexPath("fr"), licencePath("en"), licencePath("fr")];
 await writeFile(
   resolve(out, "sitemap.xml"),
   `<?xml version="1.0" encoding="utf-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls
     .map((url) => `  <url><loc>${siteUrl}${url}</loc></url>`)
     .join("\n")}\n</urlset>\n`
 );
-await writeFile(resolve(out, "robots.txt"), `User-agent: *\nAllow: /\n\nSitemap: ${siteUrl}/sitemap.xml\n`);
+await writeFile(
+  resolve(out, "robots.txt"),
+  `User-agent: *\nAllow: /\n\nSitemap: ${siteUrl}/sitemap.xml\nSitemap: ${siteUrl}/quavsit-observatory/sitemap.xml\n`
+);
 await writeFile(resolve(out, "CNAME"), `${new URL(siteUrl).host}\n`);
 await writeFile(resolve(out, ".nojekyll"), "");
 
