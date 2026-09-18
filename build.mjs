@@ -67,6 +67,7 @@ const copy = {
     colophon: (commit, date) =>
       `oss.quavern.com is built from <a href="https://github.com/${org}/quavern.github.io">github.com/${org}/quavern.github.io</a> with no dependency and served by GitHub Pages; GitHub receives visitors' IP addresses as the host. Built on ${date}${commit ? ` from commit <code>${commit}</code>` : ""}. Type: Lineal by Frank Adebiaye and Atkinson Hyperlegible Next, both under the SIL Open Font License 1.1. The Quavern name and logo are not licensed here.`,
     footerNav: "Quavern links",
+    help: "Help centre",
     legal: "Legal notice",
     privacy: "Privacy",
     slogan: "Built below the noise.",
@@ -121,6 +122,7 @@ const copy = {
     colophon: (commit, date) =>
       `oss.quavern.com est construit à partir de <a href="https://github.com/${org}/quavern.github.io">github.com/${org}/quavern.github.io</a>, sans dépendance, et servi par GitHub Pages ; GitHub reçoit l’adresse IP des visiteurs en tant qu’hébergeur. Construit le ${date}${commit ? ` à partir du commit <code>${commit}</code>` : ""}. Caractères : Lineal de Frank Adebiaye et Atkinson Hyperlegible Next, tous deux sous SIL Open Font License 1.1. Le nom et le logo Quavern ne sont pas concédés ici.`,
     footerNav: "Liens Quavern",
+    help: "Centre d’aide",
     legal: "Mentions légales",
     privacy: "Confidentialité",
     slogan: "Bâti sous le bruit.",
@@ -274,6 +276,7 @@ function footer(lang) {
           <nav aria-label="${t.footerNav}">
             <a href="https://quavern.com/?lang=${lang}">quavern.com</a>
             <a href="https://github.com/${org}">GitHub</a>
+            <a href="https://support.quavern.com/${lang}/">${t.help}</a>
             <a href="https://quavern.com/mentions-legales.html?lang=${lang}">${t.legal}</a>
             <a href="https://quavern.com/privacy.html?lang=${lang}">${t.privacy}</a>
           </nav>
